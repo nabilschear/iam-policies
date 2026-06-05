@@ -1,17 +1,6 @@
 
-resource "google_iam_deny_policy" "parameterized_deny" {
-  name         = var.policy_id
-  parent       = urlencode("cloudresourcemanager.googleapis.com/projects/${var.project_id}")
-  display_name = var.display_name
-
-  rules {
-    description = "Managed preventive compliance IAM Deny policy"
-    deny_rule {
-      denied_principals = [
-        "principalSet://goog/public:all"
-      ]
-      exception_principals = var.exception_principals
-      denied_permissions   = var.denied_permissions
-    }
+resource "null_resource" "dummy" {
+  triggers = {
+    project_id = var.project_id
   }
 }
