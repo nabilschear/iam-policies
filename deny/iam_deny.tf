@@ -12,14 +12,6 @@ resource "google_iam_deny_policy" "parameterized_deny" {
       ]
       exception_principals = var.exception_principals
       denied_permissions   = var.denied_permissions
-
-      dynamic "denial_condition" {
-        for_each = var.denial_condition_expression == "" ? [] : [1]
-        content {
-          title      = var.denial_condition_title
-          expression = var.denial_condition_expression
-        }
-      }
     }
   }
 }
