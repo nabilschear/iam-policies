@@ -30,3 +30,13 @@ variable "denied_permissions" {
   description = "List of IAM permissions to deny."
 }
 
+variable "denial_condition_title" {
+  type        = string
+  description = "The title of the denial condition."
+}
+
+variable "denial_condition_expression" {
+  type        = string
+  description = "The CEL expression for the denial condition."
+}
+
