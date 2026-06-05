@@ -1,7 +1,7 @@
 
 resource "google_iam_deny_policy" "parameterized_deny" {
   name         = var.policy_id
-  parent       = "cloudresourcemanager.googleapis.com/projects/${var.project_id}"
+  parent       = urlencode("cloudresourcemanager.googleapis.com/projects/${var.project_id}")
   display_name = var.display_name
 
   rules {
