@@ -1,6 +1,5 @@
 
 resource "google_iam_principal_access_boundary_policy" "parameterized_pab" {
-  provider                            = google-beta
   organization                        = var.organization_id
   location                            = var.location
   principal_access_boundary_policy_id = var.pab_policy_id
@@ -21,7 +20,6 @@ resource "google_iam_principal_access_boundary_policy" "parameterized_pab" {
 }
 
 resource "google_iam_projects_policy_binding" "parameterized_pab_binding" {
-  provider = google-beta
   project  = var.project_id
   location = var.location
 
@@ -30,7 +28,7 @@ resource "google_iam_projects_policy_binding" "parameterized_pab_binding" {
   display_name                     = var.binding_display_name
 
   dynamic "condition" {
-    for_each = var.binding_condition_expression != null ? [1] : []
+    for_each = var.binding_condition_expression == "" ? [] : [1]
     content {
       title       = var.binding_condition_title
       description = var.binding_condition_description

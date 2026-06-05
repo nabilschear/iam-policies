@@ -33,11 +33,11 @@ variable "denied_permissions" {
 variable "denial_condition_title" {
   type        = string
   description = "Optional title for denial condition."
-  default     = null
+  default     = ""
 }
 
 variable "denial_condition_expression" {
   type        = string
   description = "Optional CEL expression for denial condition."
-  default     = null
+  default     = ""
 }

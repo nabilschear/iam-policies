@@ -46,17 +46,17 @@ variable "binding_display_name" {
 variable "binding_condition_title" {
   type        = string
   description = "Optional title for binding condition."
-  default     = null
+  default     = ""
 }
 
 variable "binding_condition_description" {
   type        = string
   description = "Optional description for binding condition."
-  default     = null
+  default     = ""
 }
 
 variable "binding_condition_expression" {
   type        = string
   description = "Optional CEL expression for binding condition."
-  default     = null
+  default     = ""
 }

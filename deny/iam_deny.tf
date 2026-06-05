@@ -1,6 +1,5 @@
 
 resource "google_iam_deny_policy" "parameterized_deny" {
-  provider     = google-beta
   name         = var.policy_id
   parent       = "cloudresourcemanager.googleapis.com/projects/${var.project_id}"
   display_name = var.display_name
@@ -15,7 +14,7 @@ resource "google_iam_deny_policy" "parameterized_deny" {
       denied_permissions   = var.denied_permissions
 
       dynamic "denial_condition" {
-        for_each = var.denial_condition_expression != null ? [1] : []
+        for_each = var.denial_condition_expression == "" ? [] : [1]
         content {
           title      = var.denial_condition_title
           expression = var.denial_condition_expression
